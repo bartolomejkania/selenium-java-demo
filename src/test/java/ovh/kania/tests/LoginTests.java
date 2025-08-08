@@ -26,6 +26,14 @@ public class LoginTests {
 		inventoryPage = new InventoryPage(driver);
 	}
 
+	@AfterEach
+	public void closeBrowser(){
+		if (driver != null) {
+			driver.close();
+			driver.quit();
+		}
+	}
+
 	@Test
 	public void userCanLoginSuccessfully(){
 		loginPage.loginAs("standard_user", "secret_sauce");
@@ -37,4 +45,6 @@ public class LoginTests {
 		loginPage.loginAs("locked_out_user", "secret_sauce");
 		Assertions.assertEquals(loginPage.getLockedOutUserText(), loginPage.errorMessage());
 	}
+
+	
 }
