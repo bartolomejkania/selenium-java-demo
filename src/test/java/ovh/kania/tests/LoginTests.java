@@ -2,6 +2,7 @@ package ovh.kania.tests;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,6 +35,6 @@ public class LoginTests {
 	@Test
 	public void userCanLoginSuccessfullyyyyy(){
 		loginPage.loginAs("locked_out_user", "secret_sauce");
-		Assertions.assertEquals(loginPage.returnLockedOutUserText(), loginPage.errorMessage());
+		Assertions.assertEquals(loginPage.getLockedOutUserText(), loginPage.errorMessage());
 	}
 }

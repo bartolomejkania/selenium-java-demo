@@ -49,12 +49,12 @@ public class LoginPage{
 		return enterUsername(username).enterPassword(password).clickLogin();
 	}
 
-	public LoginPage errorMessage(){
-		driver.findElement(errorMessage).getText();
-		return this;
+	public String errorMessage(){
+		return driver.findElement(errorMessage).getText();
+		
 	}
 
-	public String returnLockedOutUserText(){
+	public String getLockedOutUserText(){
 		return lockedUserErrorMessage;
 	}
 }
