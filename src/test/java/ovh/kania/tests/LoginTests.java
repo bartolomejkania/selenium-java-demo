@@ -29,7 +29,6 @@ public class LoginTests {
 	@AfterEach
 	public void closeBrowser(){
 		if (driver != null) {
-			driver.close();
 			driver.quit();
 		}
 	}
