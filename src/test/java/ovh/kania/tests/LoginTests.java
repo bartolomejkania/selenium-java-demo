@@ -1,6 +1,5 @@
 package ovh.kania.tests;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -34,16 +33,33 @@ public class LoginTests {
 	}
 
 	@Test
-	public void userCanLoginSuccessfully(){
+	public void shouldStandardUserSuccessLogin(){
 		loginPage.loginAs("standard_user", "secret_sauce");
 		Assertions.assertEquals(inventoryPage.inventoryURL(), inventoryPage.getPageURL());
 	}
 
 	@Test
-	public void userCanLoginSuccessfullyyyyy(){
+	public void shouldLockedUserSeeErrorMessageOnLoginForm(){
 		loginPage.loginAs("locked_out_user", "secret_sauce");
-		Assertions.assertEquals(loginPage.getLockedOutUserText(), loginPage.errorMessage());
+		Assertions.assertEquals(loginPage.getLockedOutUserErrorMessage(), loginPage.errorMessage());
 	}
 
-	
+	@Test
+	public void shouldEmptyUsernameShowErrorMessageOnLoginForm(){
+		loginPage.loginAs("", "secret_sauce");
+		Assertions.assertEquals(loginPage.getEmptyUsernameErrorMessage(), loginPage.errorMessage());
+
+	}
+
+	@Test
+	public void shouldEmptyPasswordShowErrorMessageOnLoginForm(){
+		loginPage.loginAs("standard_user", "");
+		Assertions.assertEquals(loginPage.getEmptyPasswordErrorMessage(), loginPage.errorMessage());
+	}
+
+	@Test
+	public void shouldWrongUsernameWrongPasswordShowErrorMessageOnLoginForm(){
+		loginPage.loginAs("worng_username", "wrong_password");
+		Assertions.assertEquals(loginPage.getWrongUsernameWrongPasswordErrorMessage(), loginPage.errorMessage());
+	}
 }

@@ -17,6 +17,10 @@ public class LoginPage{
 
 	//Page texts
 	String lockedUserErrorMessage = "Epic sadface: Sorry, this user has been locked out.";
+	String emptyUsernameErrorMessage = "Epic sadface: Username is required";
+	String emptyPasswordErrorMessage = "Epic sadface: Password is required";
+	String wrongUsernameWrongPasswordErrorMessage = "Epic sadface: Username and password do not match any user in this service";
+
 	
 	//Constructor
 	public LoginPage(WebDriver driver){
@@ -54,7 +58,19 @@ public class LoginPage{
 		
 	}
 
-	public String getLockedOutUserText(){
+	public String getLockedOutUserErrorMessage(){
 		return lockedUserErrorMessage;
+	}
+
+	public String getEmptyUsernameErrorMessage(){
+		return emptyUsernameErrorMessage;
+	}
+
+	public String getEmptyPasswordErrorMessage(){
+		return emptyPasswordErrorMessage;
+	}
+
+	public String getWrongUsernameWrongPasswordErrorMessage(){
+		return wrongUsernameWrongPasswordErrorMessage;
 	}
 }
